@@ -1,4 +1,4 @@
 
 ```
-git clone https://github.com/pojokcodeid/neovim-starter.git ~/.config/nvim
+git clone https://github.com/Soedjamal/lazy-nvim.git ~/.config/nvim
 ```
