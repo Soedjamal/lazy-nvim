@@ -13,23 +13,20 @@
     "prefix": "@author",
     "body": [
       "<!-- ",
-      "Author  = Pojok Code",
-      "email   = pojokcodeid@gmail.com",
-      "Github  = https://github.com/pojokcodeid",
-      "Youtube = https://youtube.com/pojokcode",
+      "Author  = SanCode",
+      "Youtube = https://youtube.com/@sancodec",
       "Date    = $CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}",
       "File    = $TM_FILENAME",
-      "note    = Penyalahgunaan kode ini bukan tanggung jawab pojok code",
       "-->"
     ],
-    "description": "@author = Pojok Code"
+    "description": "@author = SanCode"
   },
   "html5": {
     "prefix": "html5-All",
     "body": [
       "<!DOCTYPE html>",
       "<!-- ",
-      "Author  = Pojok Code",
+      "Author  = SanCode",
       "Date    = $CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}",
       "File    = $TM_FILENAME",
       "-->",
