@@ -16,13 +16,12 @@ return {
 	{
 		"pojokcodeid/auto-lualine.nvim",
 		opts = {
-			-- for more options check out https://github.com/pojokcodeid/auto-lualine.nvim
 			setColor = "auto",
 			setOption = "roundedall",
 			setMode = 5,
 		},
 	},
-	-- overide formatting
+
 	{
 		"pojokcodeid/auto-conform.nvim",
 		opts = {
@@ -30,20 +29,18 @@ return {
 			format_timeout_ms = 5000,
 		},
 	},
-	-- install treesitter
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, { "lua", "c" })
 		end,
 	},
-	-- install mason (lsp, dap, linters, formatters)
+
 	{
 		"williamboman/mason.nvim",
 		opts = { ensure_installed = { "stylua" } },
 	},
-	-- overide lsp config
-	
 
   {
   "williamboman/mason-lspconfig.nvim",
@@ -55,7 +52,6 @@ return {
   end,
 },
 
-	-- add whichkey mappings
 	{
 		"folke/which-key.nvim",
 		opts = function(_, opts)
@@ -65,7 +61,7 @@ return {
 			})
 		end,
 	},
-	-- overide telescope
+
 	{
 		"nvim-telescope/telescope.nvim",
 		opts = function(_, opts)
@@ -84,14 +80,14 @@ return {
 			}
 		end,
 	},
-	-- add code runner
+
 	{
 		"CRAG666/code_runner.nvim",
 		opts = function(_, opts)
 			vim.list_extend(opts.filetype, { go = "go run $fileName" })
 		end,
 	},
-	-- custem nvimtree
+
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = function(_, opts)
@@ -145,7 +141,6 @@ return {
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-      -- Setup manual emmet_ls config
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
         filetypes = {
@@ -155,7 +150,7 @@ return {
       })
       lspconfig.intelephense.setup({
   capabilities = capabilities,
-  filetypes = { "php", "blade" }, -- tambahkan ini!
+  filetypes = { "php", "blade" }, 
 })
     end,
   },
