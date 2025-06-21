@@ -1,3 +1,4 @@
+
 return {
 {
   "goolord/alpha-nvim",
@@ -42,13 +43,18 @@ return {
 		opts = { ensure_installed = { "stylua" } },
 	},
 	-- overide lsp config
-	{
-		"williamboman/mason-lspconfig.nvim",
-		opts = function(_, opts)
-			vim.list_extend(opts.skip_config, {})
-			opts.virtual_text = true
-		end,
-	},
+	
+
+  {
+  "williamboman/mason-lspconfig.nvim",
+  opts = function(_, opts)
+    vim.list_extend(opts.skip_config, {})
+    opts.virtual_text = true
+    opts.ensure_installed = opts.ensure_installed or {}
+    vim.list_extend(opts.ensure_installed, { "intelephense" })
+  end,
+},
+
 	-- add whichkey mappings
 	{
 		"folke/which-key.nvim",
@@ -147,6 +153,10 @@ return {
           "svelte", "vue", "blade", "php", "astro",
         },
       })
+      lspconfig.intelephense.setup({
+  capabilities = capabilities,
+  filetypes = { "php", "blade" }, -- tambahkan ini!
+})
     end,
   },
 }
