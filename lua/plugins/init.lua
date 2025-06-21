@@ -1,15 +1,7 @@
 return {
-	-- overidse dashboard
 {
   "goolord/alpha-nvim",
   opts = {
-    -- dash_model = {
-    --   [[   _____             ______          __          ]],
-    --   [[  / ___/____ _____  / ____/___  ____/ /__        ]],
-    --   [[  \__ \/ __ `/ __ \/ /   / __ \/ __  / _ \       ]],
-    --   [[ ___/ / /_/ / / / / /___/ /_/ / /_/ /  __/       ]],
-    --   [[/____/\__/_/_/ /_/\____/\____/\__,_/\___/     ]],
-    -- },
       dash_model = {
        [[    _   __                _             ]],
        [[   / | / /__  ____ _   __(_)___ ___    ]],
@@ -19,7 +11,7 @@ return {
    },
   },
 },	
-	-- overide lualine
+
 	{
 		"pojokcodeid/auto-lualine.nvim",
 		opts = {
@@ -75,6 +67,7 @@ return {
 				find_files = {
 					hidden = true,
 				},
+
 				live_grep = {
 					theme = "dropdown",
 					only_sort_text = true,
@@ -133,4 +126,27 @@ return {
 			return opts
 		end,
 	},
+
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      local lspconfig = require("lspconfig")
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      -- Setup manual emmet_ls config
+      lspconfig.emmet_ls.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "html", "css", "javascriptreact", "typescriptreact",
+          "svelte", "vue", "blade", "php", "astro",
+        },
+      })
+    end,
+  },
 }

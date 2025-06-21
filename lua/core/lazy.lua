@@ -12,22 +12,16 @@ vim.diagnostic.config({ virtual_lines = false })
 -- initialisasi plugins
 local importdata = {
 	{
-		"pojokcodeid/nvim-lazy",
+		"Soedjamal/ixancode-nvim-lazy",
 		import = "pcode.plugins",
 	},
 }
--- load theme
+
 local theme = pcode.themes or {}
 for key, _ in pairs(theme) do
 	table.insert(importdata, { import = "pcode.plugins.theme." .. key })
 end
--- load extras plugins
-local extras = pcode.extras or {}
-for key, value in pairs(extras) do
-	if value then
-		table.insert(importdata, { import = "pcode.plugins.extras." .. key })
-	end
-end
+
 -- load language config
 local lang = pcode.lang or {}
 for key, value in pairs(lang) do
@@ -35,18 +29,14 @@ for key, value in pairs(lang) do
 		table.insert(importdata, { import = "pcode.plugins.lang." .. key })
 	end
 end
--- load transparant config
-local transparant = pcode.transparent or false
-if transparant then
-	table.insert(importdata, { import = "pcode.plugins.extras.transparent" })
-end
--- add overide path
+
 table.insert(importdata, { import = "plugins" })
+
 require("lazy").setup({
 	spec = importdata,
 	defaults = {
-		lazy = true, -- every plugin is lazy-loaded by default
-		version = "*", -- try installing the latest stable version for plugins that support semver
+		lazy = true, 
+		version = "*", 
 	},
 	ui = {
 		backdrop = 100,
@@ -62,10 +52,9 @@ require("lazy").setup({
 		},
 	},
 	change_detection = { enabled = false, notify = false },
-	checker = { enabled = true }, -- automatically check for plugin updates
+	checker = { enabled = false },
 	performance = {
 		rtp = {
-			-- disable some rtp plugins
 			disabled_plugins = {
 				"gzip",
 				"matchit",
